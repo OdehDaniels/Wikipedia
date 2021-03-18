@@ -6,23 +6,32 @@
     <head>
         <title>{% block title %}{% endblock %}</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="{% static 'encyclopedia/styles.css' %}" rel="stylesheet">
     </head>
     <body>
         <div class="row">
             <div class="sidebar col-lg-2 col-md-3">
                 <h2>Wiki</h2>
-                <form>
-                    <input class="search" type="text" name="q" placeholder="Search Encyclopedia">
-                </form>
+                   <form action="{% url 'search' %}">
+                        <div class="input-group">
+                            <input type="search" class="form-control search-query" 
+                                name="q" placeholder="Search Encyclopedia"/>
+                                <span class="input-group-append">
+                                    <button class="btn btn-secondary" type="submit">
+                                        <span class="fa fa-search"></span>
+                                    </button>
+                                </span>
+                        </div>
+                    </form>
                 <div>
                     <a href="{% url 'index' %}">Home</a>
                 </div>
                 <div>
-                    Create New Page
+                    <a href="{% url 'new' %}">Create New Page</a>
                 </div>
                 <div>
-                    Random Page
+                    <a href="{% url 'random' %}">Random Page</a>
                 </div>
                 {% block nav %}
                 {% endblock %}
